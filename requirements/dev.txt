@@ -1,0 +1,9 @@
+-r common.txt
+-r test-libs.txt
+Werkzeug==0.8.3
+pep8==1.4.5
+pyflakes==0.7.2
+pygraphviz==1.1
+pylint==0.28.0
+jedi==0.6.0
+epc==0.0.5
