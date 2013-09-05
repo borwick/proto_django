@@ -93,7 +93,7 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT_DIR, 'templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = apps_from('app') + (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -111,7 +111,8 @@ INSTALLED_APPS = (
     'social_auth',
     'registration',
     'passwords',
-) + apps_from('app')
+    'crispy_forms',
+)
 
 LOGGING = {
     'version': 1,
@@ -277,3 +278,5 @@ CACHES = {
     }
 }
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+
+CRISPY_TEMPLATE_PACK = 'uni_form'

@@ -12,3 +12,4 @@ django-autoslug==1.6.1
 git+https://github.com/omab/django-social-auth#egg=django-social-auth
 django-registration==1.0
 django-passwords==0.2.0
+django-crispy-forms==1.4.0
