@@ -17,7 +17,8 @@ Customizing for your environment
         PROJECT_NAME=example
         RABBIT_USER=$PROJECT_NAME
         RABBIT_VHOST=$PROJECT_NAME
-        sudo rabbitmqctl add_user $RABBIT_USER
+        RABBIT_PASS=
+        sudo rabbitmqctl add_user $RABBIT_USER $RABBIT_PASS
         sudo rabbitmqctl add_vhost $RABBIT_VHOST
         sudo rabbitmqctl set_permissions -p $RABBIT_VHOST $RABBIT_USER '.*' '.*' '.*'
 
@@ -32,7 +33,7 @@ Customizing for your environment
 
         SECRET_KEY = u'CONTENTS-FROM-THE-ABOVE-STEP'
         DATABASES = { 'default': { ... } }
-        BROKER_URL = "amqp://username:pass@server/nodename"
+        BROKER_URL = "" # have the shell echo "amqp://$RABBIT_USER:$RABBIT_PASS@localhost/$RABBIT_VHOST"
         CELERY_RESULT_BACKEND = "amqp"
         CELERY_CONCURRENCY = 1
         CELERYD_NODES = "w1"
