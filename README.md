@@ -12,14 +12,23 @@ Customizing for your environment
         find . -name '*.bak' -exec rm {} \;
         mv proto_django $PROJECT_NAME
 
-2. Generate a `SECRET_KEY` for your local settings:
+2. Set up rabbitmq:
+
+        PROJECT_NAME=example
+        RABBIT_USER=$PROJECT_NAME
+        RABBIT_VHOST=$PROJECT_NAME
+        sudo rabbitmqctl add_user $RABBIT_USER
+        sudo rabbitmqctl add_vhost $RABBIT_VHOST
+        sudo rabbitmqctl set_permissions -p $RABBIT_VHOST $RABBIT_USER '.*' '.*' '.*'
+
+3. Generate a `SECRET_KEY` for your local settings:
 
         from django.utils.crypto import get_random_string
         
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
         get_random_string(50, chars)
 
-3. Set up your `local_settings.py` in `$PROJECT_NAME/settings/local_settings.py`:
+4. Set up your `local_settings.py` in `$PROJECT_NAME/settings/local_settings.py`:
 
         SECRET_KEY = u'CONTENTS-FROM-THE-ABOVE-STEP'
         DATABASES = { 'default': { ... } }
@@ -28,3 +37,6 @@ Customizing for your environment
         CELERY_CONCURRENCY = 1
         CELERYD_NODES = "w1"
 
+5. Remove proto_django from the git remote list:
+
+        git remote rm origin
