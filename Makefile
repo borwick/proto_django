@@ -3,7 +3,7 @@ DJANGO_ENV ?= dev
 DJANGO_SETTINGS = proto_django.settings
 SUBDIRS = docs
 VIRTUALENV_VERSION = 1.10.1
-VIRTUALENV_ROOTDIR = ~/.virtualenvs
+VIRTUALENV_ROOTDIR = ${HOME}/.virtualenvs
 VIRTUALENV_ALIAS = proto_django
 PYTHON = python
 
