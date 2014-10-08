@@ -17,7 +17,6 @@ pulldown: clean
 	git fetch --tags
 	pip install -r requirements/${DJANGO_ENV}.txt
 	# Needed for permissions to be created/updated:
-	${PYTHON} manage.py syncdb --all
 	${PYTHON} manage.py migrate
 	${PYTHON} manage.py collectstatic --noinput
 	cd bin && ./post.sh

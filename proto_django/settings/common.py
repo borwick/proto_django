@@ -103,13 +103,16 @@ INSTALLED_APPS = apps_from('app') + (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
+
     'django.contrib.admindocs',
-    'south',
     'django.contrib.humanize',
     'djcelery',
     'djsupervisor',
-    'social_auth',
-    'registration',
+    'social.apps.django_app.default',
+    # FIXME incompatability with Django 1.7 b/c uses models before
+    # setup:
+    # 
+    # 'registration',
     'passwords',
     'crispy_forms',
 )
