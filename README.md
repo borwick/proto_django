@@ -1,6 +1,6 @@
 Contained herein is some stuff I've found useful when setting up new Django projects.
 
-You'll need to set up`proto_django/settings/local_settings.py`, but to review/find the variables you need to set you can run `python manage.py test proto_django.tests` until you don't get any errors.
+You'll need to set up`procmap/settings/local_settings.py`, but to review/find the variables you need to set you can run `python manage.py test procmap.tests` until you don't get any errors.
 
 Prerequisites
 =====
@@ -16,9 +16,9 @@ Customizing for your environment
 1. Rename the project:
 
         PROJECT_NAME=example
-        find * -type f -print0 | xargs -0 perl -i.bak -pe "s|proto_django|$PROJECT_NAME|g"
+        find * -type f -print0 | xargs -0 perl -i.bak -pe "s|procmap|$PROJECT_NAME|g"
         find . -name '*.bak' -exec rm {} \;
-        mv proto_django $PROJECT_NAME
+        mv procmap $PROJECT_NAME
 
 2. Set up rabbitmq:
 
@@ -30,6 +30,11 @@ Customizing for your environment
         sudo rabbitmqctl add_vhost $RABBIT_VHOST
         sudo rabbitmqctl set_permissions -p $RABBIT_VHOST $RABBIT_USER '.*' '.*' '.*'
 
+3. Install virtualenv and modules so that you can have Django:
+
+        make pulldown
+        workon $PROJECT_NAME
+
 3. Generate a `SECRET_KEY` for your local settings:
 
         from django.utils.crypto import get_random_string
@@ -40,12 +45,23 @@ Customizing for your environment
 4. Set up your `local_settings.py` in `$PROJECT_NAME/settings/local_settings.py`:
 
         SECRET_KEY = u'CONTENTS-FROM-THE-ABOVE-STEP'
-        DATABASES = { 'default': { ... } }
         BROKER_URL = "" # have the shell echo "amqp://$RABBIT_USER:$RABBIT_PASS@localhost/$RABBIT_VHOST"
         CELERY_RESULT_BACKEND = "amqp"
         CELERY_CONCURRENCY = 1
         CELERYD_NODES = "w1"
 
-5. Remove proto_django from the git remote list:
+        # Example:
+        DATABASES = {    'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'DATABASE-NAME',
+                'USER': 'DATABASE-USER',
+                'PASSWORD': 'DATABASE-PASS',
+                'HOST': 'DATABASE-HOST',
+                'PORT': 'DATABASE-PORT',
+            }
+        }
+
+
+5. Remove procmap from the git remote list:
 
         git remote rm origin
