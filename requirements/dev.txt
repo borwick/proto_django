@@ -1,9 +1,9 @@
 -r common.txt
 -r test-libs.txt
-Werkzeug==0.10.4
-pep8==1.6.2
-pyflakes==1.0.0
+Werkzeug==0.11.4
+pep8==1.7.0
+pyflakes==1.1.0
 # pygraphviz==1.1
-pylint==1.4.4
+pylint==1.5.4
 jedi==0.9.0
 epc==0.0.5
