@@ -2,6 +2,7 @@ Django==1.9.4
 pip==1.3.1
 psycopg2==2.6.1
 pytz==2015.7
+celery==3.1
 django-celery==3.1.17
 django-supervisor==0.3.4
 django-extensions==1.6.1

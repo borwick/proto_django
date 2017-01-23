@@ -1,6 +1,5 @@
 # (can be overridden by local_settings.py)
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 # in case we turn DEBUG off for testing:
 ALLOWED_HOSTS = '*'
