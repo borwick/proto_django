@@ -122,7 +122,7 @@ INSTALLED_APPS = apps_from('app') + (
     'django.contrib.humanize',
     'djcelery',
     'djsupervisor',
-    'social.apps.django_app.default',
+    'social_django',
     # FIXME incompatability with Django 1.7 b/c uses models before
     # setup:
     # 
@@ -184,27 +184,13 @@ CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 # --- Social Auth:
 AUTHENTICATION_BACKENDS = (
-    'social_auth.backends.twitter.TwitterBackend',
-    'social_auth.backends.facebook.FacebookBackend',
-    # 'social_auth.backends.google.GoogleOAuthBackend',
-    'social_auth.backends.google.GoogleOAuth2Backend',
-    # 'social_auth.backends.google.GoogleBackend',
-    # 'social_auth.backends.yahoo.YahooBackend',
-    # 'social_auth.backends.browserid.BrowserIDBackend',
-    # FIXME get LinkedIn backend to work (returns 401 unauthorized)
-    # 'social_auth.backends.contrib.linkedin.LinkedinBackend',
-    'social_auth.backends.contrib.disqus.DisqusBackend',
-    # 'social_auth.backends.contrib.livejournal.LiveJournalBackend',
-    # 'social_auth.backends.contrib.orkut.OrkutBackend',
-    # 'social_auth.backends.contrib.foursquare.FoursquareBackend',
-    # 'social_auth.backends.contrib.github.GithubBackend',
-    # 'social_auth.backends.contrib.vk.VKOAuth2Backend',
-    # 'social_auth.backends.contrib.live.LiveBackend',
-    # 'social_auth.backends.contrib.skyrock.SkyrockBackend',
-    # 'social_auth.backends.contrib.yahoo.YahooOAuthBackend',
-    # 'social_auth.backends.contrib.readability.ReadabilityBackend',
-    # 'social_auth.backends.contrib.fedora.FedoraBackend',
-    # 'social_auth.backends.OpenIDBackend',
+    # 'social_core.backends.open_id.OpenIdAuth',
+    # 'social_core.backends.google.GoogleOpenId',
+    # 'social_core.backends.google.GoogleOAuth2',
+    # 'social_core.backends.google.GoogleOAuth',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.yahoo.YahooOpenId',
+
     'django.contrib.auth.backends.ModelBackend',
     )
 
