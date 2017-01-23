@@ -27,3 +27,10 @@ INTERNAL_IPS = ('127.0.0.1',)
 # reset logging to DEBUG:
 for top_level_dirs in ('app', 'lib'):
     LOGGING['loggers'][top_level_dirs]['level'] = 'DEBUG'
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+   }
+}
