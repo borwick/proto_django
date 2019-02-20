@@ -16,7 +16,7 @@ PIP_EQUALS_STRING = re.compile("""
 def add_requirements(fh):
     for line in fh:
         equals_match = PIP_EQUALS_STRING.match(line)
-        if equals_match:
+        if False: #equals_match:
             paren_string = '{} ({})'.format(equals_match.group(1),
                                             equals_match.group(2))
             SEEN_REQUIREMENTS.add(paren_string)
