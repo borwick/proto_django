@@ -1,9 +1,10 @@
 # From https://github.com/jqb/django-settings/blob/master/example/settings/__init__.py
 # -*- coding: utf-8 -*-
 import os
+from pathlib import Path
 
-PWD = os.path.dirname(os.path.realpath(__file__))
-PROJECT_ROOT_DIR = os.path.join(PWD, '..', '..')
+# updating style for Django 3
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 def create_projectpath(thefile):
@@ -38,8 +39,8 @@ def apps_from(folder, include_name=True, as_list=False):
     from os.path import join, abspath, exists
 
     modules = []
-    for dname in os.listdir(join(PROJECT_ROOT_DIR, folder)):
-        if exists(abspath(join(PROJECT_ROOT_DIR, folder, dname, '__init__.py'))):
+    for dname in os.listdir(join(BASE_DIR, folder)):
+        if exists(abspath(join(BASE_DIR, folder, dname, '__init__.py'))):
             if include_name:
                 name = "%s.%s" % (folder, dname)
             else:
@@ -67,8 +68,9 @@ files_base_names += [
 
 for base_name in files_base_names:
     filepath = '%s/%s.py' % (projectpath('settings'), base_name)
-    if os.path.exists(filepath):
-        execfile(filepath)
+    with open(filepath) as f:
+        code = compile(f.read(), filepath, 'exec')
+        exec(code)
 
 # cleanup
 del base_name, files_base_names, filepath, projectpath, create_projectpath
