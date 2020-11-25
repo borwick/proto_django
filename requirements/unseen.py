@@ -31,4 +31,4 @@ if __name__=='__main__':
     for line in sys.stdin:
         line = line.strip()
         if line not in SEEN_REQUIREMENTS:
-            print line
+            print(line)
