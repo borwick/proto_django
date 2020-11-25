@@ -12,3 +12,4 @@ django-registration==3.1.1
 django-passwords==0.3.12
 django-crispy-forms==1.10.0
 social-auth-app-django
+docutils==0.16
