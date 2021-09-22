@@ -16,7 +16,7 @@ pathtools==0.1.2
 prompt-toolkit==3.0.8
 sexpdata==0.0.3
 six==1.15.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 supervisor==4.2.1
 toml==0.10.2
 vine==5.0.0
